@@ -41,7 +41,7 @@ $ npm run dev
 ### /protected
 | Server                                        | Client                                                           |
 |-----------------------------------------------|------------------------------------------------------------------|
-|                                               |  fetch("/protected", {headers: {Authorization: 'Bearer ${AC}'}}) |
+|                                               |  fetch("/protected", {headers: {Authorization: 'Bearer ${AT}'}}) |
 | AT = req.headers.authorization.split(" ")[1]; |                                                                  |
 | jwt.verify(AT, SECRET);                       |                                                                  |
 
