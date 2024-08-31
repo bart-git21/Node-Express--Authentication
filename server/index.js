@@ -1,4 +1,4 @@
-import express from "express";
+import express, { urlencoded } from "express";
 import router from "./router/index.js";
 import "dotenv/config";
 import cors from "cors";
@@ -13,6 +13,8 @@ const corsOption = {
 
 app.use("/", router);
 app.use(cors(corsOption));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 try {
   app.listen(PORT, HOST, () => {
