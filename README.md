@@ -15,7 +15,8 @@ $ npm run dev
 ## Conclusion:
 ```
 ```
-### /login
+### POST /login
+### Sign in
 | Server                                        | Client                                                           |
 |-----------------------------------------------|------------------------------------------------------------------|
 |                                               | AT = fetch("/login", body:{});                                   |
@@ -23,7 +24,8 @@ $ npm run dev
 | res.cookie(RT);                               |                                                                  |
 | res.json(AT);                                 |                                                                  |
 |                                               | localStorage.setItem(AT);                                        |
-### /refresh
+### GET /refresh
+#### get new refresh token
 | Server                                        | Client                                                           |
 |-----------------------------------------------|------------------------------------------------------------------|
 |                                               |  AT = fetch("/refresh", {credentials: "include"});               |
@@ -31,14 +33,16 @@ $ npm run dev
 | jwt.verify(req.cookie.RT, SECRET);            |                                                                  |
 | res.json(AT);                                 |                                                                  |
 |                                               | localStorage.setItem(AT);                                        |
-### /logout
+### DELETE /logout
+#### log out
 | Server                                        | Client                                                           |
 |-----------------------------------------------|------------------------------------------------------------------|
 |                                               |  fetch("/logout", {credentials: "include"})                      |
 | RTs = RTs.filter(e => e !== req.cookie.RT);   |                                                                  |
 | res.clearCookie(RT);                          |                                                                  |
 |                                               | localStorage.removeItem(AT)                                      |
-### /protected
+### POST /protected
+#### example of protected route
 | Server                                        | Client                                                           |
 |-----------------------------------------------|------------------------------------------------------------------|
 |                                               |  fetch("/protected", {headers: {Authorization: 'Bearer ${AT}'}}) |
