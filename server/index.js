@@ -2,6 +2,7 @@ import express, { urlencoded } from "express";
 import router from "./router/index.js";
 import "dotenv/config";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 const app = express();
 const HOST = process.env.HOST || "127.0.0.1";
@@ -15,6 +16,7 @@ app.use("/", router);
 app.use(cors(corsOption));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(cookieParser());
 
 try {
   app.listen(PORT, HOST, () => {
