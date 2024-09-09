@@ -12,11 +12,13 @@ const corsOption = {
     credentials: true, // allow the browser to include cookies & auth.headers
 }
 
-app.use("/", router);
 app.use(cors(corsOption));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
+app.use("/", router);
+
+app.get("/", (req, res)=>{res.status(200).send("Authentication application")})
 
 try {
   app.listen(PORT, HOST, () => {
