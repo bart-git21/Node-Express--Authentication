@@ -1,0 +1,29 @@
+### login
+POST http://localhost:7000/authentication
+Content-Type: application/json
+
+### refresh the access token
+GET http://localhost:7000/authentication
+Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI1OTA1NDU1LCJleHAiOjE3MjcyMDE0NTV9.s-nEOCfcXo6nqSASO5z7-qFODCtjCUaLcrZaeCMCQlA
+
+### log out
+DELETE http://localhost:7000/authentication
+Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI1OTA1NDU1LCJleHAiOjE3MjcyMDE0NTV9.s-nEOCfcXo6nqSASO5z7-qFODCtjCUaLcrZaeCMCQlA
+
+# ============================================================
+### create the new user
+POST http://localhost:7000/users
+Content-Type: application/json
+
+### get user by id
+GET http://localhost:7000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI1OTA1NDU1LCJleHAiOjE3MjU5MDYzNTV9.QiU0Kb_QSJBKaJ6F3kbFE98UoOf8p6Sm7WdhvCS5Xqk
+
+# ============================================================
+### moderator route
+GET http://localhost:7000/moderator
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI1OTA1NDU1LCJleHAiOjE3MjU5MDYzNTV9.QiU0Kb_QSJBKaJ6F3kbFE98UoOf8p6Sm7WdhvCS5Xqk
+
+### admin route
+GET http://localhost:7000/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI1OTA1NDU1LCJleHAiOjE3MjU5MDYzNTV9.QiU0Kb_QSJBKaJ6F3kbFE98UoOf8p6Sm7WdhvCS5Xqk
