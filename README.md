@@ -12,41 +12,64 @@ $ npm run dev
 ```
 
 
-## Conclusion:
+## Simplified http requests and response:
 ```
 ```
-### POST /login
+### POST /authentication
 ### Sign in
-| Server                                        | Client                                                           |
-|-----------------------------------------------|------------------------------------------------------------------|
-|                                               | AT = fetch("/login", body:{});                                   |
-| RTs.push();                                   |                                                                  |
-| res.cookie(RT);                               |                                                                  |
-| res.json(AT);                                 |                                                                  |
-|                                               | localStorage.setItem(AT);                                        |
-### GET /refresh
+| Server                                        | Client                                       |
+|-----------------------------------------------|----------------------------------------------|
+|                                               | AT = fetch("/authentication", body);         |
+| RTs.push();                                   |                                              |
+| res.cookie(RT);                               |                                              |
+| res.json(AT);                                 |                                              |
+|                                               | localStorage.setItem(AT);                    |
+### GET /authentication
 #### get new refresh token
-| Server                                        | Client                                                           |
-|-----------------------------------------------|------------------------------------------------------------------|
-|                                               |  AT = fetch("/refresh", {credentials: "include"});               |
-| RTs.includes(RT)                              |                                                                  |
-| jwt.verify(req.cookie.RT, SECRET);            |                                                                  |
-| res.json(AT);                                 |                                                                  |
-|                                               | localStorage.setItem(AT);                                        |
-### DELETE /logout
+| Server                                        | Client                                       |
+|-----------------------------------------------|----------------------------------------------|
+|                                               | AT = fetch("/authentication", {credentials}) |
+| RTs.includes(RT)                              |                                              |
+| jwt.verify(req.cookie.RT, SECRET);            |                                              |
+| res.json(AT);                                 |                                              |
+|                                               | localStorage.setItem(AT);                    |
+### DELETE /authentication
 #### log out
-| Server                                        | Client                                                           |
-|-----------------------------------------------|------------------------------------------------------------------|
-|                                               |  fetch("/logout", {credentials: "include"})                      |
-| RTs = RTs.filter(e => e !== req.cookie.RT);   |                                                                  |
-| res.clearCookie(RT);                          |                                                                  |
-|                                               | localStorage.removeItem(AT)                                      |
-### POST /protected
-#### example of protected route
-| Server                                        | Client                                                           |
-|-----------------------------------------------|------------------------------------------------------------------|
-|                                               |  fetch("/protected", {headers: {Authorization: 'Bearer ${AT}'}}) |
-| AT = req.headers.authorization.split(" ")[1]; |                                                                  |
-| jwt.verify(AT, SECRET);                       |                                                                  |
+| Server                                        | Client                                       |
+|-----------------------------------------------|----------------------------------------------|
+|                                               |  fetch("/authentication", {credentials})     |
+| RTs = RTs.filter(e => e !== req.cookie.RT);   |                                              |
+| res.clearCookie(RT);                          |                                              |
+|                                               | localStorage.removeItem(AT)                  |
+
+### POST /users
+#### create the new user
+| Server                                        | Client                                       |
+|-----------------------------------------------|----------------------------------------------|
+|                                               |  fetch("/protected", {Authorization})        |
+| AT = req.headers.authorization.split(" ")[1]; |                                              |
+| jwt.verify(AT, SECRET);                       |                                              |
+### GET /users
+#### get authenticated user
+| Server                                        | Client                                       |
+|-----------------------------------------------|----------------------------------------------|
+|                                               |  fetch("/protected", {Authorization})        |
+| AT = req.headers.authorization.split(" ")[1]; |                                              |
+| jwt.verify(AT, SECRET);                       |                                              |
+
+### GET /admin
+#### example of page with admin permissions
+| Server                                        | Client                                       |
+|-----------------------------------------------|----------------------------------------------|
+|                                               |  fetch("/protected", {Authorization})        |
+| AT = req.headers.authorization.split(" ")[1]; |                                              |
+| jwt.verify(AT, SECRET);                       |                                              |
+### GET /moderator
+#### example of page with admin or moderator permissions
+| Server                                        | Client                                       |
+|-----------------------------------------------|----------------------------------------------|
+|                                               |  fetch("/protected", {Authorization})        |
+| AT = req.headers.authorization.split(" ")[1]; |                                              |
+| jwt.verify(AT, SECRET);                       |                                              |
 
 
