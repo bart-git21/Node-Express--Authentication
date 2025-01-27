@@ -11,9 +11,9 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
-router.post("/authentication", controller.login);
-router.get("/authentication", controller.refresh);
-router.delete("/authentication", controller.logout);
+router.post("/auth", controller.login);
+router.get("/auth", controller.token);
+router.delete("/auth", controller.logout);
 
 router.post("/users", controller.register);
 router.get("/users", authenticateToken, controller.getUser);
