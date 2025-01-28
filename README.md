@@ -8,6 +8,7 @@ The base server side application for authentication.
 # Technologies Used
 Backend: Node.js, Express.js.
 Authentication: JSON Web Tokens (JWT).
+Data format: JSON.
 Deployment: GitHub.
 
 # Features
