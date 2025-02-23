@@ -22,7 +22,7 @@ Get protected information through authentication middleware.
 - Node.js and npm installed
 ### Clone the repository
 ```
-$ git clone https://github.com/bart-git21/authentication.git
+$ git clone https://github.com/bart-git21/Node-Express--authentication.git
 ```
 ### Install dependencies
 ```
